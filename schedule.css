@@ -1,0 +1,104 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  background: rgba(200, 200, 200, 0.1);
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.header__logo {
+  text-align: center;
+}
+
+.header__title {
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.schools-controller input {
+  display: none;
+}
+
+.schools-controller label,
+.speaker-controller label {
+  position: relative;
+  display: block;
+  padding: 5px 5px 5px 30px;
+  margin-bottom: 10px;
+}
+
+.schools-controller label:after,
+.speaker-controller label:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 0.2em;
+  border: 2px solid grey;
+}
+
+.schools-controller input:checked+label {
+  background: url("./img/icon-check.svg") no-repeat;
+  background-position: left;
+}
+
+.speaker-controller input {
+  display: none;
+}
+
+.speaker-controller input:checked+label {
+  background: url("./img/icon-check.svg") no-repeat;
+  background-position: left;
+}
+
+.date-controller__input-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.date-controller__label {
+  margin-right: 10px;
+}
+
+.lectures {
+  display: table;
+  width: 100%;
+}
+
+.lectures__item {
+  display: table-row;
+}
+
+.lectures__item>div {
+  display: table-cell;
+  padding: 5px 10px;
+}
+
+.lectures__date {
+  width: 120px;
+}

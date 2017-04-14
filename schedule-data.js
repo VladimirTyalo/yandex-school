@@ -1,4 +1,5 @@
-[
+'use strict';
+var lectures = [
   {
     "lecture-id": "101",
     "date": "2016-10-20T15:00:00.000Z",

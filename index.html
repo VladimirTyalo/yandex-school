@@ -1,17 +1,108 @@
 <!DOCTYPE html>
 <html lang="rus">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="schedule.css">
   <title>«Мобилизация»</title>
 </head>
+
 <body>
-    <header class="header">
+  <header class="header">
+    <div class="container">
       <div class="header__logo">Яндекс «Мобилизация»</div>
       <h1 class="header__title">Расписание лекций</h1>
-    </header>
+    </div>
+  </header>
 
-    <main class="main"></main>
+  <main class="main">
+    <div class="container">
+
+      <div class="controls">
+        <div class="schools-controller">
+          <h3 class="shools-controller__title">Выберите школу</h3>
+
+          <input type="checkbox" name="design" id="schools-controller-design" checked>
+          <label for="schools-controller-design" class="schools-controller__label">Школа мобильного дизайна</label>
+
+          <input type="checkbox" name="mobile" id="schools-controller-mobile" checked>
+          <label for="schools-controller-mobile" class="schools-controller__label">Школа мобильной разработки</label>
+
+          <input type="checkbox" name="interfaces" id="schools-controller-interfaces" checked>
+          <label for="schools-controller-interfaces" class="schools-controller__label">Школа разработки интерфейсов</label>
+        </div>
+
+        <div class="speaker-controller">
+          <h3 class="speaker-controller__title">Выберите докладчика</h3>
+          <input type="checkbox" name="DmitriyDushkin" id="DmitriyDushkin" checked>
+          <label for="DmitriyDushkin" class="speaker-controller__label">Дмитрий Душкин</label>
+        </div>
+
+        <div class="date-controller">
+          <h3 class="date-controller__title">Выберите даты</h3>
+          <div class="date-controller__input-wrapper">
+            <label class="date-controller__label" for="start-date">начало:</label>
+            <input class="date-controller__input" type="date" id="start-date" name="start-date">
+          </div>
+          <div class="date-controller__input-wrapper">
+            <label class="date-controller__label" for="end-date">окончание:</label>
+            <input class="date-controller__input" type="date" id="end-date" name="end-date">
+          </div>
+        </div>
+      </div>
+
+      <ul class="lectures">
+        <li class="lectures__item">
+          <div class="lectures__date">
+            <span class="lectures__day">10</span>
+            <span class="lectures__month">октября</span>
+            <span class="lectures__year">2016</span>
+            <span class="lectures__time">15:20</span>
+          </div>
+          <div class="lectures__title">Адаптивная верстка</div>
+          <div class="lectures__school">Школа разработки интерфейсов</div>
+          <div class="lectures__speakers">
+            <a href="#" class="lectures__speaker">Дмитрий Душкин</a>
+          </div>
+          <div class="lectures__info">
+            <a href="#" class="lectures__video">Смотреть</a>
+            <a href="#" class="lectures__materials">Материалы</a>
+          </div>
+        </li>
+        <li class="lectures__item">
+          <div class="lectures__date">
+            <span class="lectures__day">10</span>
+            <span class="lectures__month">октябрь</span>
+            <span class="lectures__year">2016</span>
+          </div>
+          <div class="lectures__title">Работа с сенсорным пользовательским вводом</div>
+          <div class="lectures__school">Школа разработки интерфейсов</div>
+          <div class="lectures__speakers">
+            <a href="#" class="lectures__speaker">Дмитрий Душкин</a>
+          </div>
+          <div class="lectures__info">
+            <a href="#" class="lectures__video">Смотреть</a>
+            <a href="#" class="lectures__materials">Материалы</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+
+    </div>
+  </footer>
+
+  <script src="schedule-data.js"></script>
+  <script src="schedule.js"></script>
+  <script>
+
+  </script>
 </body>
+
 </html>
