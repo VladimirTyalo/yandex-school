@@ -501,7 +501,11 @@ var lectures = [
       "design"
     ],
     "title": "Развитие продукта",
-    "speaker": "Андрей Гевак",
+    "speaker": {
+        "name": "Андрей Гевак",
+        "company": "Яндекс",
+        "bio": ""
+      },
     "url": "https://events.yandex.ru/lib/talks/4295/"
   },
   {
@@ -511,7 +515,11 @@ var lectures = [
       "design"
     ],
     "title": "Исследование интерфейсов",
-    "speaker": "Кондратьев Александр",
+    "speaker": {
+        "name": "Кондратьев Александр",
+         "company": "Яндекс",
+        "bio": ""
+      },
     "url": "https://events.yandex.ru/lib/talks/4319/"
   },
   {
@@ -521,7 +529,11 @@ var lectures = [
       "design"
     ],
     "title": "Работа в команде",
-    "speaker": "Юрий Подорожный",
+     "speaker": {
+        "name": "Юрий Подорожный",
+         "company": "Яндекс",
+        "bio": ""
+      },
     "url": "https://events.yandex.ru/lib/talks/4345/"
   },
   {
@@ -546,4 +558,4 @@ var lectures = [
     ],
     "url": "https://events.yandex.ru/lib/talks/4349/"
   }
-]
+];

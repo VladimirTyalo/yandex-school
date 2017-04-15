@@ -34,12 +34,6 @@
           <label for="schools-controller-interfaces" class="schools-controller__label">Школа разработки интерфейсов</label>
         </div>
 
-        <div class="speaker-controller">
-          <h3 class="speaker-controller__title">Выберите докладчика</h3>
-          <input type="checkbox" name="DmitriyDushkin" id="DmitriyDushkin" checked>
-          <label for="DmitriyDushkin" class="speaker-controller__label">Дмитрий Душкин</label>
-        </div>
-
         <div class="date-controller">
           <h3 class="date-controller__title">Выберите даты</h3>
           <div class="date-controller__input-wrapper">
@@ -51,18 +45,28 @@
             <input class="date-controller__input" type="date" id="end-date" name="end-date">
           </div>
         </div>
+
+        <div class="speaker-controller">
+          <h3 class="speaker-controller__title">Выберите докладчиков</h3>
+        </div>
+
       </div>
 
       <ul class="lectures">
         <li class="lectures__item">
           <div class="lectures__date">
+            <span class="lectures__year">2016</span>
             <span class="lectures__day">10</span>
             <span class="lectures__month">октября</span>
-            <span class="lectures__year">2016</span>
             <span class="lectures__time">15:20</span>
           </div>
           <div class="lectures__title">Адаптивная верстка</div>
-          <div class="lectures__school">Школа разработки интерфейсов</div>
+          <div class="lectures__schools">
+            <div class="lectures__school">Школа разработки интерфейсов</div>
+            <div class="lectures__school">Школа мобильной разработки</div>
+            <div class="lectures__school">Школа моильного дизайна</div>
+
+          </div>
           <div class="lectures__speakers">
             <a href="#" class="lectures__speaker">Дмитрий Душкин</a>
           </div>
@@ -101,7 +105,12 @@
   <script src="schedule-data.js"></script>
   <script src="schedule.js"></script>
   <script>
-
+    var inputs = document.querySelectorAll('input');
+    inputs.forEach(function (input) {
+      input.addEventListener('change', function (ev) {
+        console.log(input.value);
+      })
+    })
   </script>
 </body>
 

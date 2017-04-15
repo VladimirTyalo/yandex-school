@@ -2,7 +2,6 @@
 *:before,
 *:after {
   box-sizing: border-box;
-  background: rgba(200, 200, 200, 0.1);
 }
 
 body {
@@ -23,12 +22,22 @@ ul {
   margin: 0 auto;
 }
 
+.header {
+  background: #e61400;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
 .header__logo {
   text-align: center;
+  color: white;
+  font-size: 30px;
 }
 
 .header__title {
   text-align: center;
+  color: white;
+  text-transform: uppercase;
 }
 
 .controls {
@@ -39,24 +48,60 @@ ul {
   margin-bottom: 20px;
 }
 
+.schools-controller {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
 .schools-controller input {
   display: none;
 }
+.shools-controller__title {
+  width: 100%;
+}
 
-.schools-controller label,
-.speaker-controller label {
+.schools-controller label {
+  cursor: pointer;
   position: relative;
-  display: block;
-  padding: 5px 5px 5px 30px;
+  
+  padding: 5px 5px 5px 40px;
   margin-bottom: 10px;
 }
 
-.schools-controller label:after,
-.speaker-controller label:after {
+.speaker-controller {
+  flex: 1 0 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.speaker-controller__title {
+  flex: 0 0 100%;
+}
+
+.speaker-controller label {
+  flex: 1 0 160px;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.4;
+  padding: 3px 5px 3px 30px;
+  margin: 3px 5px;
+  white-space: nowrap;
+  transition: 0.3s;
+  border-radius: 0.4em;
+}
+
+.schools-controller label:after {
   content: "";
   position: absolute;
-  top: 0;
-  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5px;
   width: 30px;
   height: 30px;
   border-radius: 0.2em;
@@ -65,7 +110,7 @@ ul {
 
 .schools-controller input:checked+label {
   background: url("./img/icon-check.svg") no-repeat;
-  background-position: left;
+  background-position: 10px center;
 }
 
 .speaker-controller input {
@@ -73,14 +118,32 @@ ul {
 }
 
 .speaker-controller input:checked+label {
-  background: url("./img/icon-check.svg") no-repeat;
-  background-position: left;
+  background-color: #ffc107;
+  opacity: 1;
+  background-image: url("./img/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: 7px center;
+  background-size: 0.8em;
+}
+
+.speaker-controller label:hover {
+  background-image: none !important;
+  opacity: 1;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(1px);
+}
+
+.speaker-controller label:active {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.7);
+  background: white !important;
+  color: black;
 }
 
 .date-controller__input-wrapper {
-  display: flex;
-  justify-content: space-between;
+  display: inline-block;
+  margin: 0 20px 10px 0;
 }
+
 .date-controller__label {
   margin-right: 10px;
 }
@@ -92,13 +155,117 @@ ul {
 
 .lectures__item {
   display: table-row;
+  transition: 0.4s;
 }
 
 .lectures__item>div {
   display: table-cell;
   padding: 5px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid grey;
 }
 
 .lectures__date {
   width: 120px;
+  text-align: center;
+}
+
+.lectures__year {
+  width: 100%;
+  display: inline-block;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.lectures__day {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.lectures__time {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.lectures__speaker {
+  text-decoration: none;
+  cursor: pointer;
+  font-style: italic;
+  color: black;
+  transition: 0.3s;
+}
+
+.lectures__speaker:hover {
+  color: #e61400;
+}
+
+.lectures__schools {
+  min-width: 240px;
+}
+
+.lectures__school {
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.lectures__video,
+.lectures__materials {
+  display: block;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 0.2em;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  margin-bottom: 5px;
+  transition: 0.3s;
+}
+
+.lectures__video:hover,
+.lectures__materials:hover {
+  color: white;
+  background: #e61400;
+  border: 1px solid transparent;
+}
+
+@media (max-width: 700px) {
+  .lectures {
+    display: block;
+  }
+  .lectures__date {
+    display: flex;
+    text-align: left;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-bottom: 1px solid #e61400;
+    z-index: 10;
+    vertical-align: middle;
+    background: white;
+  }
+  .lectures__year {
+    display: inline-block;
+    width: auto;
+  }
+  .lectures__day {
+    font-weight: normal;
+  }
+  .lectures__item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .lectures__item:after {
+    content: '';
+    position: absolute;
+    top: 1em;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #e61400;
+    z-index: 1;
+  }
+  .lectures__item>div {
+    border: none;
+    padding-left: 0;
+  }
 }
