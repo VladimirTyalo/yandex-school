@@ -38,11 +38,11 @@
           <h3 class="date-controller__title">Выберите даты</h3>
           <div class="date-controller__input-wrapper">
             <label class="date-controller__label" for="start-date">начало:</label>
-            <input class="date-controller__input" type="date" id="start-date" name="start-date">
+            <input class="date-controller__input" type="date" id="start-date" name="start-date" value="2016-09-29">
           </div>
           <div class="date-controller__input-wrapper">
             <label class="date-controller__label" for="end-date">окончание:</label>
-            <input class="date-controller__input" type="date" id="end-date" name="end-date">
+            <input class="date-controller__input" type="date" id="end-date" name="end-date" value="2017-10-29">
           </div>
         </div>
 
@@ -104,14 +104,7 @@
 
   <script src="schedule-data.js"></script>
   <script src="schedule.js"></script>
-  <script>
-    var inputs = document.querySelectorAll('input');
-    inputs.forEach(function (input) {
-      input.addEventListener('change', function (ev) {
-        console.log(input.value);
-      })
-    })
-  </script>
+
 </body>
 
 </html>

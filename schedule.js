@@ -42,7 +42,12 @@
         });
       }
 
-      return result;
+      return result.sort(function (a, b) {
+        var aTime = (new Date(a.date)).getTime();
+        var bTime = (new Date(b.date)).getTime();
+
+        return aTime - bTime;
+      });
     },
 
     // list of speakers in the event
@@ -68,34 +73,38 @@
   };
 
   var controller = {
-    getSchoolLectures: function (filterObj) {
-      return model.getLectures(filterObj);
+    filterObj: {},
+    getSchoolLectures: function () {
+      return model.getLectures(controller.filterObj);
     },
     init: function () {
-      speakerView.init();
-
-      var filterObj = { schools: ["mobile", "design", "interfaces"] };
-      scheduleView.init(controller.getSchoolLectures(filterObj));
+      pageView.init();
     }
-
   };
 
-  var scheduleView = {
-    init: function (lectureList) {
-      scheduleView.render(lectureList);
+
+  var lecturesView = {
+    init: function () {
+      lecturesView.render();
     },
-    render: function (lectureList) {
+    render: function () {
+      var lectureList = controller.getSchoolLectures();
       var $lectures = document.querySelector(".lectures");
       var fragment = document.createDocumentFragment();
 
+      // remove old (li)  lecture items elements
+      var $lectureItems = document.querySelectorAll(".lectures__item");
+      $lectureItems.forEach(function (item) {
+        item.parentNode.removeChild(item);
+      });
+
+      // create new (li) lecture items elements
       lectureList.forEach(function (lecture) {
         var $lectureItem = document.createElement("li");
         $lectureItem.setAttribute("class", "lectures__item");
-
-
         $lectureItem.appendChild(lectureView.init(lecture));
-        fragment.appendChild($lectureItem);
 
+        fragment.appendChild($lectureItem);
       });
 
       $lectures.appendChild(fragment);
@@ -109,23 +118,82 @@
       var speakerList = model.getSpeakers();
 
       // TODO refactor with ES6 string templates;
-      speakerList.forEach(function (speaker) {
-        var input = document.createElement("input");
-        input.setAttribute("type", "checkbox");
-        input.setAttribute("name", speaker);
-        input.setAttribute("id", speaker);
-        input.setAttribute("checked", true);
+      speakerList.forEach(function (speaker, index) {
+        var input = createInputHTML(speaker, index);
+        setFilterObject(input, "speakers");
 
-        var label = document.createElement("label");
-        label.setAttribute("for", speaker);
-        label.setAttribute("class", "speaker-controller__label");
-        label.innerText = speaker;
+        input.addEventListener("change", function (ev) {
+          setFilterObject(input, "speakers");
+          lecturesView.render();
+        });
+
+        var label = createLabelHTML(speaker, index);
 
         fragment.appendChild(input);
         fragment.appendChild(label);
       });
 
+      var allInput = createAllInputHTML();
+      var allLabel = createAllLabelHTML();
+
+      fragment.appendChild(allInput);
+      fragment.appendChild(allLabel);
+
       $speakers.appendChild(fragment);
+
+
+      var $speakerInputList = document.querySelectorAll(".speaker-controller__input:not(:last-of-type)");
+
+      allInput.addEventListener("change", function (ev) {
+        if (allInput.checked) {
+          $speakerInputList.forEach(function (input) {
+            input.checked = true;
+            input.dispatchEvent(new Event("change"));
+          });
+        } else {
+          $speakerInputList.forEach(function (input) {
+            input.checked = false;
+            input.dispatchEvent(new Event("change"));
+          });
+        }
+      });
+
+
+      function createInputHTML(speaker, index) {
+        var input = document.createElement("input");
+        input.setAttribute("class", "speaker-controller__input");
+        input.setAttribute("type", "checkbox");
+        input.setAttribute("name", speaker);
+        input.setAttribute("id", speaker);
+        input.setAttribute("checked", true);
+
+        return input;
+      }
+
+      function createLabelHTML(speaker, index) {
+        var label = document.createElement("label");
+        label.setAttribute("for", speaker);
+        label.setAttribute("class", "speaker-controller__label");
+        label.innerText = speaker;
+        label.style.order = index + 1; // save room for All checkbox
+
+        return label;
+      }
+
+      function createAllInputHTML() {
+        var input = createInputHTML("Все", 0);
+        input.style.order = 0;
+
+        return input;
+      }
+
+      function createAllLabelHTML() {
+        var label = createLabelHTML("Все", 0);
+        label.classList.add("speaker-controller__label--all");
+        label.style.order = 0;
+
+        return label;
+      }
     }
   };
 
@@ -163,72 +231,151 @@
     }
   };
 
+  var pageView = {
+    init: function () {
+      speakerView.init();
+      lecturesView.init(controller.getSchoolLectures());
+
+      var $schoolControllers = document.querySelectorAll(".schools-controller input");
+      $schoolControllers.forEach(function (input) {
+        setFilterObject(input, "schools");
+
+        input.addEventListener("change", function (ev) {
+          setFilterObject(input, "schools");
+          lecturesView.render();
+        });
+      });
+
+      var $dateControllers = document.querySelectorAll(".date-controller__input");
+
+      $dateControllers.forEach(function (input) {
+        setDatesRage(input);
+        input.addEventListener("change", function (ev) {
+          setDatesRage(input);
+          lecturesView.render();
+        });
+      });
+
+      function setDatesRage(input) {
+        if (input.id === "start-date") {
+          if (controller.filterObj.dates) {
+            controller.filterObj.dates[0] = input.value;
+          } else {
+            controller.filterObj.dates = [input.value];
+          }
+        } else if (input.id === "end-date") {
+          if (controller.filterObj.dates) {
+            controller.filterObj.dates[1] = input.value;
+          } else {
+            controller.filterObj.dates = [, input.value];
+          }
+        }
+      }
+    }
+  };
 
   controller.init();
-})(document, window, lectures, undefined);
 
-function getLectureInfoHTML(lecture) {
-  return `<a href="${lecture.url}" class="lectures__video">Смотреть</a>
+
+
+
+  // helper functions
+
+  function setFilterObject(input, filterParam) {
+    if (input.checked) {
+      addToFilterObj(controller.filterObj, filterParam, input.name);
+    } else {
+      removeFromFilterObj(controller.filterObj, filterParam, input.name);
+    }
+  }
+
+  function addToFilterObj(obj, filterParam, filterValue) {
+    if (filterParam in obj) {
+      if (obj[filterParam].indexOf(filterValue) < 0) {
+        obj[filterParam].push(filterValue);
+      }
+    } else {
+      obj[filterParam] = [filterValue];
+    }
+  }
+
+  function removeFromFilterObj(obj, filterParam, filterValue) {
+    if (filterParam in obj) {
+      var index = obj[filterParam].indexOf(filterValue);
+
+      if (index >= 0) {
+        obj[filterParam].splice(index, 1);
+      }
+    }
+  }
+
+
+  function getLectureInfoHTML(lecture) {
+    return `<a href="${lecture.url}" class="lectures__video">Смотреть</a>
           <a href="#" class="lectures__materials">Материалы</a>`;
-}
+  }
 
-function getLectureDateHTML(lecture) {
-  var date = new Date(lecture.date);
+  function getLectureDateHTML(lecture) {
+    var date = new Date(lecture.date);
 
-  return `
+    return `
         <span class="lectures__year">${date.getFullYear()}</span>
         <span class="lectures__day">${date.getDay()}</span>
         <span class="lectures__month">${getMonthName(date.getMonth())}</span>
         <span class="lectures__time">${getTime(date)}</span>
       `;
-}
+  }
 
-function getLectureSpeakersHTML(lecture) {
-  if ("speakers" in lecture) {
-    return lecture.speakers.reduce(function (acc, speaker) {
-      acc += `<a href="#" class="lectures__speaker">${speaker.name}</a>`;
+  function getLectureSpeakersHTML(lecture) {
+    if ("speakers" in lecture) {
+      return lecture.speakers.reduce(function (acc, speaker) {
+        acc += `<a href="#" class="lectures__speaker">${speaker.name}</a>`;
+        return acc;
+      }, "");
+    } else {
+      return `<a href="#" class="lectures__speaker">${lecture.speaker.name}</a>`;
+    }
+  }
+
+  function getLectureSchoolsHTML(lecture) {
+    return lecture.schools.reduce(function (acc, school) {
+      acc += `<div class="lectures__school">${getSchoolName(school)}</div>`;
       return acc;
     }, "");
-  } else {
-    return `<a href="#" class="lectures__speaker">${lecture.speaker.name}</a>`;
   }
-}
 
-function getLectureSchoolsHTML(lecture) {
-  return lecture.schools.reduce(function (acc, school) {
-    acc += `<div class="lectures__school">${getSchoolName(school)}</div>`;
-    return acc;
-  }, "");
-}
+  function getTime(date) {
+    var hours = date.getHours();
+    var mins = date.getMinutes();
 
-function getTime(date) {
-  var hours = date.getHours();
-  var mins = date.getMinutes();
+    return `${hours < 10 ? "0" + hours : hours}:${mins < 10 ? "0" + mins : mins}`;
+  }
 
-  return `${hours < 10 ? "0" + hours : hours}:${mins < 10 ? "0" + mins : mins}`;
-}
+  function getSchoolName(shortName) {
+    var map = {
+      interfaces: "Школа разработки интерфейсов",
+      design: "Школа мобильного дизайна",
+      mobile: "Школа мобильной разработки"
+    };
+    return map[shortName];
+  }
 
-function getSchoolName(shortName) {
-  var map = {interfaces: "Школа разработки интерфейсов",
-             design: "Школа мобильного дизайна",
-            mobile: "Школа мобильной разработки"};
-  return map[shortName];
-}
+  function getMonthName(month) {
+    var months = {
+      0: "января",
+      1: "февраля",
+      2: "марта",
+      3: "апреля",
+      4: "мая",
+      5: "июня",
+      6: "июля",
+      7: "августа",
+      8: "сентября",
+      9: "окрября",
+      10: "ноября",
+      11: "декабря"
+    };
+    return months[month];
+  }
 
-function getMonthName(month) {
-  var months = {
-    0: "января",
-    1: "февраля",
-    2: "марта",
-    3: "апреля",
-    4: "мая",
-    5: "июня",
-    6: "июля",
-    7: "августа",
-    8: "сентября",
-    9: "окрября",
-    10: "ноября",
-    11: "декабря"
-  };
-  return months[month];
-}
+})(document, window, lectures, undefined);

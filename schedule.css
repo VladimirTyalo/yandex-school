@@ -8,6 +8,10 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin: 0;
   padding: 0;
+  /*  чтобы не пропадал вериткальный скролл
+      при отсутствии данных в расписании
+      сделаем страницу чуть больше высоты вьюпорта  */ 
+  min-height: 102vh;
 }
 
 ul {
@@ -58,13 +62,14 @@ ul {
 .schools-controller input {
   display: none;
 }
+
 .shools-controller__title {
   width: 100%;
 }
 
 .schools-controller label {
   cursor: pointer;
-  position: relative; 
+  position: relative;
   padding: 5px 5px 5px 40px;
   margin-bottom: 10px;
 }
@@ -80,15 +85,14 @@ ul {
   flex: 0 0 100%;
 }
 
-.speaker-controller label {
-  flex: 1 1 200px;
+.speaker-controller__label {
+  flex: 1 1 180px;
   font-size: 14px;
   cursor: pointer;
-  opacity: 0.4;
   padding: 3px 5px 3px 30px;
   margin: 3px 5px;
   white-space: nowrap;
-  transition: 0.3s;
+  transition: background-color 0.3s;
   border-radius: 0.4em;
 }
 
@@ -109,11 +113,11 @@ ul {
   background-position: 10px center;
 }
 
-.speaker-controller input {
+.speaker-controller__input {
   display: none;
 }
 
-.speaker-controller input:checked+label {
+.speaker-controller__input:checked+.speaker-controller__label {
   background-color: #ffc107;
   opacity: 1;
   background-image: url("./img/icon-check.svg");
@@ -122,17 +126,26 @@ ul {
   background-size: 0.8em;
 }
 
-.speaker-controller label:hover {
-  background-image: none !important;
-  opacity: 1;
+.speaker-controller__label:hover {
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(1px);
 }
 
-.speaker-controller label:active {
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.7);
-  background: white !important;
-  color: black;
+.speaker-controller__label:not(:checked)+.speaker-controller__label:active {
+  background-color: #ffc107;
+  opacity: 1;
+  background-image: url("./img/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: 7px center;
+  background-size: 0.8em;
+}
+
+.speaker-controller__input:checked+.speaker-controller__label--all {
+  background-color: #82b5e2;
+}
+
+.speaker-controller__input:not(:checked)+.speaker-controller__label--all {
+  background-color: lightblue;
 }
 
 .date-controller__input-wrapper {
@@ -184,11 +197,13 @@ ul {
 }
 
 .lectures__speaker {
+  display: block;
   text-decoration: none;
   cursor: pointer;
   font-style: italic;
   color: black;
   transition: 0.3s;
+  margin-bottom: 5px;
 }
 
 .lectures__speaker:hover {
@@ -196,7 +211,7 @@ ul {
 }
 
 .lectures__schools {
-  min-width: 240px;
+  min-width: 250px;
 }
 
 .lectures__school {
@@ -224,15 +239,15 @@ ul {
   border: 1px solid transparent;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .lectures {
     display: block;
   }
   .lectures__date {
-    display: flex;
-    text-align: left;
-    flex-direction: row;
-    justify-content: flex-start;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
     border-bottom: 1px solid #e61400;
     z-index: 10;
     vertical-align: middle;
@@ -244,6 +259,9 @@ ul {
   }
   .lectures__day {
     font-weight: normal;
+  }
+  .lectures__time {
+    display: block;
   }
   .lectures__item {
     display: flex;
@@ -263,5 +281,9 @@ ul {
   .lectures__item>div {
     border: none;
     padding-left: 0;
+  }
+  .lectures__video,
+  .lectures__materials {
+    display: inline-block;
   }
 }
