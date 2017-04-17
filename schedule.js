@@ -73,16 +73,32 @@
     },
     init: function () {
       speakerView.init();
+
+      var filterObj = { schools: ["mobile", "design", "interfaces"] };
+      scheduleView.init(controller.getSchoolLectures(filterObj));
     }
 
   };
 
   var scheduleView = {
     init: function (lectureList) {
-      
+      scheduleView.render(lectureList);
     },
     render: function (lectureList) {
+      var $lectures = document.querySelector(".lectures");
+      var fragment = document.createDocumentFragment();
 
+      lectureList.forEach(function (lecture) {
+        var $lectureItem = document.createElement("li");
+        $lectureItem.setAttribute("class", "lectures__item");
+
+
+        $lectureItem.appendChild(lectureView.init(lecture));
+        fragment.appendChild($lectureItem);
+
+      });
+
+      $lectures.appendChild(fragment);
     }
   };
 
@@ -114,16 +130,16 @@
   };
 
   var lectureView = {
-    init: function (lecture, $lectureItem) {
+    init: function (lecture) {
       var fragment = document.createDocumentFragment();
 
       var $lectureDate = document.createElement("div");
-      $lectureDate.setAttribute("class", "lectures_date");
+      $lectureDate.setAttribute("class", "lectures__date");
       $lectureDate.innerHTML = getLectureDateHTML(lecture);
 
       var $lectureTitle = document.createElement("div");
       $lectureTitle.setAttribute("class", "lectures__title");
-      $lecturesTitle.innerHTML = lecture.title;
+      $lectureTitle.innerHTML = lecture.title;
 
       var $lectureSchools = document.createElement("div");
       $lectureSchools.setAttribute("class", "lectures__schools");
@@ -143,7 +159,7 @@
       fragment.appendChild($lectureSpeakers);
       fragment.appendChild($lectureInfo);
 
-      $lectureInfo.appendChild(fragment);
+      return fragment;
     }
   };
 
@@ -174,13 +190,13 @@ function getLectureSpeakersHTML(lecture) {
       return acc;
     }, "");
   } else {
-    return `<a href="#" class="lectures__speaker">${speaker.name}</a>`;
+    return `<a href="#" class="lectures__speaker">${lecture.speaker.name}</a>`;
   }
 }
 
 function getLectureSchoolsHTML(lecture) {
   return lecture.schools.reduce(function (acc, school) {
-    acc += `<div class="lectures__school">${school}</div>`;
+    acc += `<div class="lectures__school">${getSchoolName(school)}</div>`;
     return acc;
   }, "");
 }
@@ -190,6 +206,13 @@ function getTime(date) {
   var mins = date.getMinutes();
 
   return `${hours < 10 ? "0" + hours : hours}:${mins < 10 ? "0" + mins : mins}`;
+}
+
+function getSchoolName(shortName) {
+  var map = {interfaces: "Школа разработки интерфейсов",
+             design: "Школа мобильного дизайна",
+            mobile: "Школа мобильной разработки"};
+  return map[shortName];
 }
 
 function getMonthName(month) {

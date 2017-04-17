@@ -64,8 +64,7 @@ ul {
 
 .schools-controller label {
   cursor: pointer;
-  position: relative;
-  
+  position: relative; 
   padding: 5px 5px 5px 40px;
   margin-bottom: 10px;
 }
@@ -74,10 +73,7 @@ ul {
   flex: 1 0 100%;
   display: flex;
   flex-direction: row;
-  justify-content: stretch;
   flex-wrap: wrap;
-  align-items: flex-start;
-  overflow: hidden;
 }
 
 .speaker-controller__title {
@@ -85,7 +81,7 @@ ul {
 }
 
 .speaker-controller label {
-  flex: 1 0 160px;
+  flex: 1 1 200px;
   font-size: 14px;
   cursor: pointer;
   opacity: 0.4;

@@ -540,7 +540,8 @@ var lectures = [
     "lecture-id": "312",
     "date": "2016-11-29T15:00:00.000Z",
     "schools": [
-      "design"
+      "design",
+      "interfaces"
     ],
     "title": "Айдентика",
     "speaker": "",
