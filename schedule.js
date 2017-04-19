@@ -51,8 +51,11 @@
     },
 
     // list of speakers in the event
-    getSpeakers: function () {
+    getSpeakers: function (filterObj) {
+      // get speakers only from checked shcools
+      var lectures = model.getLectures(filterObj);
       var speakersSet = lectures.reduce(function (acc, lecture) {
+
         if ("speakers" in lecture) {
           lecture.speakers
             .map(function (speaker) {
@@ -82,7 +85,6 @@
     }
   };
 
-
   var lecturesView = {
     init: function () {
       lecturesView.render();
@@ -111,12 +113,24 @@
     }
   };
 
-  var speakerView = {
-    init: function () {
-      var $speakers = document.querySelector(".speaker-controller");
+  var speakerListView = {
+    init() {
+      speakerListView.render();
+    },
+    render: function () {
+      var $speakers = document.getElementsByClassName("speaker-controller")[0];
       var fragment = document.createDocumentFragment();
-      var speakerList = model.getSpeakers();
+      var speakerList = model.getSpeakers(controller.filterObj);
 
+      // remove old speaker info
+      document.querySelectorAll(".speaker-controller label").forEach(function(el){
+        el.parentNode.removeChild(el);
+      });
+
+      document.querySelectorAll(".speaker-controller input").forEach(function(el){
+        el.parentNode.removeChild(el);
+      });
+  
       // TODO refactor with ES6 string templates;
       speakerList.forEach(function (speaker, index) {
         var input = createInputHTML(speaker, index);
@@ -141,7 +155,6 @@
 
       $speakers.appendChild(fragment);
 
-
       var $speakerInputList = document.querySelectorAll(".speaker-controller__input:not(:last-of-type)");
 
       allInput.addEventListener("change", function (ev) {
@@ -157,7 +170,6 @@
           });
         }
       });
-
 
       function createInputHTML(speaker, index) {
         var input = document.createElement("input");
@@ -227,13 +239,75 @@
       fragment.appendChild($lectureSpeakers);
       fragment.appendChild($lectureInfo);
 
+      // add speaker field listener
+      var speakers = $lectureSpeakers.querySelectorAll(".lectures__speaker");
+
+      speakers.forEach(function (speaker) {
+        speaker.addEventListener("click", function (ev) {
+          ev.preventDefault();
+
+          if ("speakers" in lecture) {
+            var index = lecture.speakers.reduce(function (acc, el, index) {
+              if (el.name === speaker.innerText) acc = index;
+              return acc;
+            }, -1);
+            speakerInfoView.render(lecture.speakers[index]);
+          } else {
+            speakerInfoView.render(lecture.speaker);
+          }
+
+        });
+      });
+
       return fragment;
+    }
+  };
+
+  var speakerInfoView = {
+    render: function (speaker) {
+      var $modal = document.createElement("div");
+      var $back = document.createElement("div");
+
+      $modal.setAttribute("class", "speaker-info");
+      $modal.innerHTML = `
+       <button class="speaker-info__close"></button>
+       <div class="speaker-info__name">${speaker.name}</div>
+       <div class="speaker-info__company">Компания: ${speaker.company}</div>
+       <div class="speaker-info__bio">
+        ${speaker.bio}
+       </div>`;
+
+
+      $back.setAttribute("class", "backlayer");
+
+      document.body.appendChild($back);
+      document.body.appendChild($modal);
+
+
+      // add Listeners
+      $back.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+
+        removeModal();
+      });
+
+      $modal.querySelector(".speaker-info__close").addEventListener("click", function (ev) {
+        ev.preventDefault();
+        removeModal();
+      });
+
+      function removeModal() {
+        $modal.parentNode.removeChild($modal);
+        $back.parentNode.removeChild($back);
+      }
+
     }
   };
 
   var pageView = {
     init: function () {
-      speakerView.init();
+      speakerListView.init();
       lecturesView.init(controller.getSchoolLectures());
 
       var $schoolControllers = document.querySelectorAll(".schools-controller input");
@@ -243,6 +317,7 @@
         input.addEventListener("change", function (ev) {
           setFilterObject(input, "schools");
           lecturesView.render();
+          speakerListView.render();
         });
       });
 
@@ -275,8 +350,6 @@
   };
 
   controller.init();
-
-
 
 
   // helper functions

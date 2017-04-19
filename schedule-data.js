@@ -532,7 +532,7 @@ var lectures = [
      "speaker": {
         "name": "Юрий Подорожный",
          "company": "Яндекс",
-        "bio": ""
+        "bio": "Опыт в IT 15 лет"
       },
     "url": "https://events.yandex.ru/lib/talks/4345/"
   },
@@ -554,7 +554,7 @@ var lectures = [
       {
         "name": "Ждан Филиппов",
         "company": "Яндекс",
-        "bio": ""
+        "bio": "Опыт в профессии 10 лет"
       }
     ],
     "url": "https://events.yandex.ru/lib/talks/4349/"
