@@ -1,6 +1,21 @@
 'use strict';
 var lectures = [
   {
+    "lecture-id": "199",
+    "date": "2017-07-20T15:00:00.000Z",
+    "schools": [
+      "interfaces"
+    ],
+    "title": "Адаптивная верстка",
+    "speaker": {
+      "name": "Дмитрий Душкин",
+      "company": "Яндекс",
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
+    },
+    "video": "https://events.yandex.ru/lib/talks/4162/",
+    "materials": "https://events.yandex.ru/lib/talks/4162/"
+  },
+  {
     "lecture-id": "101",
     "date": "2016-10-20T15:00:00.000Z",
     "schools": [
@@ -10,9 +25,10 @@ var lectures = [
     "speaker": {
       "name": "Дмитрий Душкин",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4162/"
+    "video": "https://events.yandex.ru/lib/talks/4162/",
+    "materials": "https://events.yandex.ru/lib/talks/4162/"
   },
   {
     "lecture-id": "102",
@@ -24,9 +40,9 @@ var lectures = [
     "speaker": {
       "name": "Дмитрий Душкин",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4172/"
+    "video": "https://events.yandex.ru/lib/talks/4172/"
   },
   {
     "lecture-id": "103",
@@ -38,9 +54,10 @@ var lectures = [
     "speaker": {
       "name": "Максим Васильев",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4197/"
+    "video": "https://events.yandex.ru/lib/talks/4197/",
+    "materials": "https://events.yandex.ru/lib/talks/4197/"
   },
   {
     "lecture-id": "104",
@@ -52,9 +69,10 @@ var lectures = [
     "speaker": {
       "name": "Сергей Бережной",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4230/"
+    "video": "https://events.yandex.ru/lib/talks/4230/",
+    "materials": "https://events.yandex.ru/lib/talks/4230/"
   },
   {
     "lecture-id": "105",
@@ -66,9 +84,10 @@ var lectures = [
     "speaker": {
       "name": "Андрей Морозов",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4292/"
+    "video": "https://events.yandex.ru/lib/talks/4292/",
+    "materials": "https://events.yandex.ru/lib/talks/4292/"
   },
   {
     "lecture-id": "106",
@@ -80,9 +99,10 @@ var lectures = [
     "speaker": {
       "name": "Иван Карев",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4162/"
+    "video": "https://events.yandex.ru/lib/talks/4162/",
+    "materials": "https://events.yandex.ru/lib/talks/4162/"
   },
   {
     "lecture-id": "107",
@@ -94,9 +114,10 @@ var lectures = [
     "speaker": {
       "name": "Прокопюк Андрей",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4323/"
+    "video": "https://events.yandex.ru/lib/talks/4323/",
+    "materials": "https://events.yandex.ru/lib/talks/4323/"
   },
   {
     "lecture-id": "108",
@@ -108,9 +129,10 @@ var lectures = [
     "speaker": {
       "name": "Прокопюк Андрей",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4324/"
+    "video": "https://events.yandex.ru/lib/talks/4324/",
+    "materials": "https://events.yandex.ru/lib/talks/4324/"
   },
   {
     "lecture-id": "201",
@@ -122,9 +144,10 @@ var lectures = [
     "speaker": {
       "name": "Эдуард Мацуков",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4160/"
+    "video": "https://events.yandex.ru/lib/talks/4160/",
+    "materials": "https://events.yandex.ru/lib/talks/4160/"
   },
   {
     "lecture-id": "202",
@@ -136,9 +159,10 @@ var lectures = [
     "speaker": {
       "name": "Дмитрий Складнов",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4161/"
+    "video": "https://events.yandex.ru/lib/talks/4161/",
+    "materials": "https://events.yandex.ru/lib/talks/4161/"
   },
   {
     "lecture-id": "203",
@@ -150,9 +174,10 @@ var lectures = [
     "speaker": {
       "name": "Роман Григорьев",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4169/"
+    "video": "https://events.yandex.ru/lib/talks/4169/",
+    "materials": "https://events.yandex.ru/lib/talks/4169/"
   },
   {
     "lecture-id": "204",
@@ -164,9 +189,10 @@ var lectures = [
     "speaker": {
       "name": "Роман Григорьев",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4169/"
+    "video": "https://events.yandex.ru/lib/talks/4169/",
+    "materials": "https://events.yandex.ru/lib/talks/4169/"
   },
   {
     "lecture-id": "205",
@@ -178,9 +204,10 @@ var lectures = [
     "speaker": {
       "name": "Роман Григорьев",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4195/"
+    "video": "https://events.yandex.ru/lib/talks/4195/",
+    "materials": "https://events.yandex.ru/lib/talks/4195/"
   },
   {
     "lecture-id": "206",
@@ -192,9 +219,10 @@ var lectures = [
     "speaker": {
       "name": "Алексей Щербинин",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4196/"
+    "video": "https://events.yandex.ru/lib/talks/4196/",
+    "materials": "https://events.yandex.ru/lib/talks/4196/"
   },
   {
     "lecture-id": "207",
@@ -206,9 +234,10 @@ var lectures = [
     "speaker": {
       "name": "Алексей Марков",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4222/"
+    "video": "https://events.yandex.ru/lib/talks/4222/",
+    "materials": "https://events.yandex.ru/lib/talks/4222/"
   },
   {
     "lecture-id": "208",
@@ -220,9 +249,10 @@ var lectures = [
     "speaker": {
       "name": "Владимир Тагаков",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4222/"
+    "video": "https://events.yandex.ru/lib/talks/4222/",
+    "materials": "https://events.yandex.ru/lib/talks/4222/"
   },
   {
     "lecture-id": "209",
@@ -234,9 +264,10 @@ var lectures = [
     "speaker": {
       "name": "Алексей Макаров",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4275/"
+    "video": "https://events.yandex.ru/lib/talks/4275/",
+    "materials": "https://events.yandex.ru/lib/talks/4275/"
   },
   {
     "lecture-id": "210",
@@ -248,9 +279,10 @@ var lectures = [
     "speaker": {
       "name": "Алексей Щербинин",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4276/"
+    "video": "https://events.yandex.ru/lib/talks/4276/",
+    "materials": "https://events.yandex.ru/lib/talks/4276/"
   },
   {
     "lecture-id": "211",
@@ -262,9 +294,10 @@ var lectures = [
     "speaker": {
       "name": "Максим Хромцов",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4296/"
+    "video": "https://events.yandex.ru/lib/talks/4296/",
+    "materials": "https://events.yandex.ru/lib/talks/4296/"
   },
   {
     "lecture-id": "212",
@@ -276,9 +309,10 @@ var lectures = [
     "speaker": {
       "name": "Максим Хромцов",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4297/"
+    "video": "https://events.yandex.ru/lib/talks/4297/",
+    "materials": "https://events.yandex.ru/lib/talks/4297/"
   },
   {
     "lecture-id": "213",
@@ -290,9 +324,10 @@ var lectures = [
     "speaker": {
       "name": "Денис Загаевский",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4320/"
+    "video": "https://events.yandex.ru/lib/talks/4320/",
+    "materials": "https://events.yandex.ru/lib/talks/4320/"
   },
   {
     "lecture-id": "214",
@@ -304,9 +339,10 @@ var lectures = [
     "speaker": {
       "name": "Денис Загаевский",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4321/"
+    "video": "https://events.yandex.ru/lib/talks/4321/",
+    "materials": "https://events.yandex.ru/lib/talks/4321/"
   },
   {
     "lecture-id": "215",
@@ -318,9 +354,10 @@ var lectures = [
     "speaker": {
       "name": "Дмитрий Попов",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4346/"
+    "video": "https://events.yandex.ru/lib/talks/4346/",
+    "materials": "https://events.yandex.ru/lib/talks/4346/"
   },
   {
     "lecture-id": "216",
@@ -332,23 +369,26 @@ var lectures = [
     "speaker": {
       "name": "Илья Сергеев",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4352/"
+    "video": "https://events.yandex.ru/lib/talks/4352/",
+    "materials": "https://events.yandex.ru/lib/talks/4352/"
   },
   {
     "lecture-id": "301",
     "date": "2016-10-18T12:00:00.000Z",
     "schools": [
-      "design"
+      "design",
+      "mobile"
     ],
     "title": "Идея, исследование, концепт (Часть 1)",
     "speaker": {
       "name": "Антон Тен",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4158/"
+    "video": "https://events.yandex.ru/lib/talks/4158/",
+    "materials": "https://events.yandex.ru/lib/talks/4158/"
   },
   {
     "lecture-id": "302",
@@ -360,9 +400,24 @@ var lectures = [
     "speaker": {
       "name": "Антон Тен",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4159/"
+    "video": "https://events.yandex.ru/lib/talks/4159/"
+  },
+  {
+    "lecture-id": "302",
+    "date": "2017-08-18T15:00:00.000Z",
+    "schools": [
+      "design",
+      "mobile"
+    ],
+    "title": "Идея, исследование, концепт (Часть 1)",
+    "speaker": {
+      "name": "Антон Тен",
+      "company": "Яндекс",
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
+    },
+    "video": "https://events.yandex.ru/lib/talks/4159/"
   },
   {
     "lecture-id": "303",
@@ -374,9 +429,10 @@ var lectures = [
     "speaker": {
       "name": "Васюнин Николай",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4167/"
+    "video": "https://events.yandex.ru/lib/talks/4167/",
+    "materials": "https://events.yandex.ru/lib/talks/4167/",
   },
   {
     "lecture-id": "304",
@@ -388,9 +444,10 @@ var lectures = [
     "speaker": {
       "name": "Сергей Калабин",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4189/"
+    "video": "https://events.yandex.ru/lib/talks/4189/",
+    "materials": "https://events.yandex.ru/lib/talks/4189/",
   },
   {
     "lecture-id": "305",
@@ -402,9 +459,10 @@ var lectures = [
     "speaker": {
       "name": "Васюнин Николай",
       "company": "Яндекс",
-      "bio": ""
+      "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
     },
-    "url": "https://events.yandex.ru/lib/talks/4190/"
+    "video": "https://events.yandex.ru/lib/talks/4190/",
+    "materials": "https://events.yandex.ru/lib/talks/4190/",
   },
   {
     "lecture-id": "306",
@@ -418,15 +476,16 @@ var lectures = [
       {
         "name": "Сергей Томилов",
         "company": "Яндекс",
-        "bio": ""
+        "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
       },
       {
         "name": "Дарья Старицына",
         "company": "Яндекс",
-        "bio": ""
+        "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
       }
     ],
-    "url": "https://events.yandex.ru/lib/talks/4267/"
+    "video": "https://events.yandex.ru/lib/talks/4267/",
+    "materials": "https://events.yandex.ru/lib/talks/4267/",
   },
   {
     "lecture-id": "307",
@@ -440,15 +499,16 @@ var lectures = [
       {
         "name": "Сергей Томилов",
         "company": "Яндекс",
-        "bio": ""
+        "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
       },
       {
         "name": "Дарья Старицына",
         "company": "Яндекс",
-        "bio": ""
+        "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
       }
     ],
-    "url": "https://events.yandex.ru/lib/talks/4268/"
+    "video": "https://events.yandex.ru/lib/talks/4268/",
+    "materials": "https://events.yandex.ru/lib/talks/4268/",
   },
   {
     "lecture-id": "308",
@@ -462,15 +522,16 @@ var lectures = [
       {
         "name": "Сергей Томилов",
         "company": "Яндекс",
-        "bio": ""
+        "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
       },
       {
         "name": "Дарья Старицына",
         "company": "Яндекс",
-        "bio": ""
+        "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
       }
     ],
-    "url": "https://events.yandex.ru/lib/talks/4268/"
+    "video": "https://events.yandex.ru/lib/talks/4268/",
+    "materials": "https://events.yandex.ru/lib/talks/4268/",
   },
   {
     "lecture-id": "308extra",
@@ -484,15 +545,16 @@ var lectures = [
       {
         "name": "Rijshouwer Krijn",
         "company": "Framer",
-        "bio": ""
+        "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
       },
       {
         "name": "Treub Jonas",
         "company": "Framer",
-        "bio": ""
+        "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
       }
     ],
-    "url": "https://events.yandex.ru/lib/talks/4269/"
+    "video": "https://events.yandex.ru/lib/talks/4269/",
+    "materials": "https://events.yandex.ru/lib/talks/4269/",
   },
   {
     "lecture-id": "309",
@@ -504,9 +566,10 @@ var lectures = [
     "speaker": {
         "name": "Андрей Гевак",
         "company": "Яндекс",
-        "bio": ""
+        "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
       },
-    "url": "https://events.yandex.ru/lib/talks/4295/"
+    "video": "https://events.yandex.ru/lib/talks/4295/",
+    "materials": "https://events.yandex.ru/lib/talks/4295/",
   },
   {
     "lecture-id": "310",
@@ -518,9 +581,10 @@ var lectures = [
     "speaker": {
         "name": "Кондратьев Александр",
          "company": "Яндекс",
-        "bio": ""
+        "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
       },
-    "url": "https://events.yandex.ru/lib/talks/4319/"
+    "video": "https://events.yandex.ru/lib/talks/4319/",
+    "materials": "https://events.yandex.ru/lib/talks/4319/",
   },
   {
     "lecture-id": "311",
@@ -534,7 +598,8 @@ var lectures = [
          "company": "Яндекс",
         "bio": "Опыт в IT 15 лет"
       },
-    "url": "https://events.yandex.ru/lib/talks/4345/"
+    "video": "https://events.yandex.ru/lib/talks/4345/",
+    "materials": "https://events.yandex.ru/lib/talks/4345/",
   },
   {
     "lecture-id": "312",
@@ -549,7 +614,7 @@ var lectures = [
       {
         "name": "Дмитрий Моруз",
         "company": "Яндекс",
-        "bio": ""
+        "bio": "Более 5 лет работы в IT. Характер строгий  нордический. Вредных привычек не имеет"
       },
       {
         "name": "Ждан Филиппов",
@@ -557,6 +622,7 @@ var lectures = [
         "bio": "Опыт в профессии 10 лет"
       }
     ],
-    "url": "https://events.yandex.ru/lib/talks/4349/"
+    "video": "https://events.yandex.ru/lib/talks/4349/",
+    "materials": "https://events.yandex.ru/lib/talks/4349/",
   }
 ];

@@ -45,8 +45,8 @@
       return result.sort(function (a, b) {
         var aTime = (new Date(a.date)).getTime();
         var bTime = (new Date(b.date)).getTime();
-
-        return aTime - bTime;
+        
+        return  bTime - aTime;
       });
     },
 
@@ -123,14 +123,14 @@
       var speakerList = model.getSpeakers(controller.filterObj);
 
       // remove old speaker info
-      document.querySelectorAll(".speaker-controller label").forEach(function(el){
+      document.querySelectorAll(".speaker-controller label").forEach(function (el) {
         el.parentNode.removeChild(el);
       });
 
-      document.querySelectorAll(".speaker-controller input").forEach(function(el){
+      document.querySelectorAll(".speaker-controller input").forEach(function (el) {
         el.parentNode.removeChild(el);
       });
-  
+
       // TODO refactor with ES6 string templates;
       speakerList.forEach(function (speaker, index) {
         var input = createInputHTML(speaker, index);
@@ -297,6 +297,13 @@
         removeModal();
       });
 
+      window.addEventListener("keydown", function (ev) {
+        var keyCode = ev.keyCode || ev.which;
+        // if esc key pressed
+        console.log(keyCode);
+        if (keyCode === 27) removeModal();
+      });
+
       function removeModal() {
         $modal.parentNode.removeChild($modal);
         $back.parentNode.removeChild($back);
@@ -384,8 +391,14 @@
 
 
   function getLectureInfoHTML(lecture) {
-    return `<a href="${lecture.url}" class="lectures__video">Смотреть</a>
-          <a href="#" class="lectures__materials">Материалы</a>`;
+    var currentTime = Date.now();
+    var lectureTime = (new Date(lecture.date)).getTime();
+    if (currentTime < lectureTime) {
+      return `<div class="lectures__not-available">Лекция еще не началась</div>`
+    } else {
+      return `<a href="${lecture.video}" class="lectures__video" target="_blank">Смотреть</a>
+          <a href="${lecture.materials}" class="lectures__materials" target="_blank">Материалы</a>`;
+    }
   }
 
   function getLectureDateHTML(lecture) {
@@ -393,7 +406,7 @@
 
     return `
         <span class="lectures__year">${date.getFullYear()}</span>
-        <span class="lectures__day">${date.getDay()}</span>
+        <span class="lectures__day">${date.getDate()}</span>
         <span class="lectures__month">${getMonthName(date.getMonth())}</span>
         <span class="lectures__time">${getTime(date)}</span>
       `;
