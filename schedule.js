@@ -335,6 +335,7 @@
         input.addEventListener("change", function (ev) {
           setDatesRage(input);
           lecturesView.render();
+          speakerListView.render();
         });
       });
 
